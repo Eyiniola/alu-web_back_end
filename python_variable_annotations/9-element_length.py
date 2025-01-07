@@ -3,18 +3,19 @@
 Annotated functions parameters and return values with the appropriate types
 """
 
-from typing import Iterable, Sequence, Tuple, List
+from typing import Iterable, Sequence, List, Tuple
 
 
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
-    Takes a list of strings and returns a list of tuples where each tuple contains
-    the string and its corresponding length.
+    Takes an iterable of sequences and returns a list of tuples where
+    each tuple contains the sequence and its corresponding length.
 
     Args:
-        lst (List[str]): A list of strings.
+        lst (Iterable[Sequence]): An iterable of sequences (e.g., strings, lists).
 
     Returns:
-        List[Tuple[str, int]]: A list of tuples, each containing a string and its length.
+        List[Tuple[Sequence, int]]: A list of tuples, each containing a sequence
+                                    and its length.
     """
     return [(i, len(i)) for i in lst]
