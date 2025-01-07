@@ -3,10 +3,10 @@
 Annotated functions parameters and return values with the appropriate types
 """
 
-from typing import List, Tuple
+from typing import Iterable, Sequence, Tuple, List
 
 
-def element_length(lst: List[str]) -> List[Tuple[str, int]]:
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """
     Takes a list of strings and returns a list of tuples where each tuple contains
     the string and its corresponding length.
