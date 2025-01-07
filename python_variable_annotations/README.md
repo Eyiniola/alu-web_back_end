@@ -1,0 +1,1 @@
+This directory deals on variable annotations
