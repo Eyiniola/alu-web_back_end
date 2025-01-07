@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module provides a function that uses type annotations to 
+This module provides a function that uses type annotations to
 specify argument and return types.
 """
 
