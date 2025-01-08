@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module defines a type-annotated function `sum_list` which calculates the 
+This module defines a type-annotated function sum_list which calculates the
 sum of a list of floats.
 """
 
