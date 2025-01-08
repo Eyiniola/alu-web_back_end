@@ -16,7 +16,7 @@ def measure_time(n: int, max_delay: int) -> float:
     """
     Measures the average time taken to execute wait_n(n, max_delay).
 
-    This function runs the wait_n coroutine n times and measures the total 
+    This function runs the wait_n coroutine n times and measures the total
     time taken. It returns the average time taken per task.
 
     Args:
