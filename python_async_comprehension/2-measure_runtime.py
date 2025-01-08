@@ -8,7 +8,9 @@ import time
 import importlib
 
 
-async_comprehension  = importlib.import_module("1-async_comprehension").async_comprehension
+async_comprehension  = importlib.import_module(
+    "1-async_comprehension"
+).async_comprehension
 
 
 async def measure_runtime() -> float:
@@ -20,8 +22,12 @@ async def measure_runtime() -> float:
     """
     start_time = time.perf_counter()
 
-    await asyncio.gather(async_comprehension(), async_comprehension(),
-                   async_comprehension(), async_comprehension())
+    await asyncio.gather(
+        async_comprehension(), 
+        async_comprehension(),
+        async_comprehension(), 
+        async_comprehension()
+    )
     
     end_time = time.perf_counter()
 
