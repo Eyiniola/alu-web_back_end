@@ -10,7 +10,6 @@ import importlib
 
 wait_random = importlib.import_module("0-basic_async_syntax").wait_random
 
-
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawns wait_random n times with the specified max_delay.
@@ -29,11 +28,18 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     completed, _ = await asyncio.wait(delays)
     results = [task.result() for task in completed]
 
-    # Constructing a sorted list without using sort()
+    # Manually insert each delay into the correct position in a new list
     sorted_results = []
-    while results:
-        smallest = min(results)
-        sorted_results.append(smallest)
-        results.remove(smallest)
+    for delay in results:
+        inserted = False
+        # Find the correct position to insert this delay
+        for i in range(len(sorted_results)):
+            if delay < sorted_results[i]:
+                sorted_results.insert(i, delay)
+                inserted = True
+                break
+        # If delay is greater than all elements in sorted_results, append it
+        if not inserted:
+            sorted_results.append(delay)
 
     return sorted_results
