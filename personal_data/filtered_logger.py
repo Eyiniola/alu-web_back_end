@@ -5,7 +5,7 @@ import re
 from typing import List
 import logging
 import os
-import mysql.connector 
+import mysql.connector
 
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
@@ -85,4 +85,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+ 
