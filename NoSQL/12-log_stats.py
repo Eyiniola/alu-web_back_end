@@ -15,8 +15,10 @@ def log_stats():
     total_logs = collection.count_documents({})
     print(f"{total_logs} logs")
 
-    # Count occurrences of each HTTP method
+    # Define HTTP methods
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+
+    # Print method counts
     print("Methods:")
     for method in methods:
         count = collection.count_documents({"method": method})
