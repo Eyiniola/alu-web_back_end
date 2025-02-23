@@ -2,32 +2,26 @@
 """ log stats """
 from pymongo import MongoClient
 
+def get_log_stats():
+    # Connect to MongoDB
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['logs']
+    collection = db['nginx']
 
-def main(collection, options=None):
-    """ log stats"""
-    
+    # Get the total number of documents
+    total_logs = collection.count_documents({})
+    print(f"{total_logs} logs")
 
-    num_logs = collection.count({})
+    # Get the count for each HTTP method
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-    results = [0, 0, 0, 0, 0]
-    num_status_check = collection.count({"method": "GET", "path": "/status"})
-    for method in methods:
-        num_method = collection.count({"method": method})
-        results[methods.index(method)] = num_method
-    
-    print("{} logs".format(num_logs))
     print("Methods:")
     for method in methods:
-        print("\tmethod {}: {}".format(method, results[methods.index(method)]))
-    
-    print("{} status check".format(num_status_check))
+        count = collection.count_documents({"method": method})
+        print(f"    method {method}: {count}")
 
-
-
-
+    # Get the count for method=GET and path=/status
+    status_check_count = collection.count_documents({"method": "GET", "path": "/status"})
+    print(f"{status_check_count} status check")
 
 if __name__ == "__main__":
-    client = MongoClient()
-    db = client.logs
-    logs = db.nginx
-    main(logs)
+    get_log_stats()
